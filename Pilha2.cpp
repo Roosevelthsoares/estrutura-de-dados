@@ -29,49 +29,81 @@ class Pilha{
                 }
                 delete[]vet; //a memória deixa de estar reservada pelo sistema
                 vet = new_vet; // vet passa a apontar para o endereço de memória de new_vet
+                //delete[]new_vet; //a memória deixa de estar reservada pelo sistema
             } 
             vet[topo++]=e;
         }
         void desempilhar(){
-            if (topo == 0)
+            if (getTopo() == 0)
                 cout << "Pilha Vazia" << endl;
             else{
                 topo--;
-                delete vet(topo);
-
+                if(topo == (tam_max/2)){
+                    int *new_vet = new int[tam_max/2];
+                    for (int i=0; i<=topo;i++){
+                        new_vet[i]=vet[i];
+                    }
+                    delete[]vet;
+                    vet = new_vet;
+                }
+                
             }
                 
         }
-        int vazia(){
-           // if (topo != -1)
-           //     return 1;
-           // return -1;
-           return (topo == -1); //VERDADE = 1
-        }
+         
         int getTopo(){
-            if(topo != -1)
-                return vet[topo];
-            return -1; //caso contrario retornara o lixo da memoria
+            return topo;
+        
         }
+
         void visualizar(){
-            for(int i = topo; i>=0; i--)
-                cout << vet[i] << endl;
+            if(getTopo() == 0){
+               cout << "Pilha Vazia" << endl;
+            }
+            else {
+                for(int i = topo; i>0; i--)
+                    cout << vet[i-1] << endl;
+            }
         }
 };
 
 int main(){
     Pilha p;
-    //p.getTopo();
-    cout << "Topo: " << p.getTopo()<<endl;
-    cout << "Fila Vazia: " << p.vazia()<<endl;
-    //p.vazia();
+
+    cout << "Topo: " <<p.getTopo() << endl;
     p.empilhar(10);
+    cout << "Topo: " <<p.getTopo() << endl;
     p.empilhar(11);
+    cout << "Topo: " <<p.getTopo() << endl;
     p.empilhar(12);
+    cout << "Topo: " <<p.getTopo() << endl;
+    p.empilhar(13);
+    cout << "Topo: " <<p.getTopo() << endl;
+    p.empilhar(14);
+    cout << "Topo: " <<p.getTopo() << endl;
+    p.empilhar(15);
+    cout << "Topo: " <<p.getTopo() << endl;
     p.visualizar();
+    cout << " "<<endl;
     p.desempilhar();
-    p.visualizar();
-    cout << "Topo: " << p.getTopo()<<endl;
-    cout << "Fila Vazia: " << p.vazia()<<endl;
+    cout << "Topo: " <<p.getTopo() << endl;
+    p.desempilhar();
+    cout << "Topo: " <<p.getTopo() << endl;
+    p.desempilhar();
+    cout << "Topo: " <<p.getTopo() << endl;
+    p.desempilhar();
+    cout << "Topo: " <<p.getTopo() << endl;
+    p.desempilhar();
+    cout << "Topo: " <<p.getTopo() << endl;
+    p.desempilhar();
+    cout << "Topo: " <<p.getTopo() << endl;
+    p.desempilhar();
+    p.desempilhar();
+    p.desempilhar();
+    p.desempilhar();
+    p.desempilhar();
+    cout << "Topo: " <<p.getTopo() << endl;
+    //p.visualizar();
+   
     return 0;
 }
