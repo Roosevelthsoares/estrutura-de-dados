@@ -25,7 +25,7 @@ class Fila{
         int getFim(){return fim;}
         int getInicio(){return inicio;}
         int getTam(){return tam;}
-        
+
         //insere no fim
         void inserir(int e){
             if(fim == tam){
@@ -42,8 +42,7 @@ class Fila{
 
         //remove do inicio
         void remover(){
-
-            (inicio)++;
+            inicio++;
 
             if(fim == inicio){
                 cout << "Fila vazia"  << endl;
@@ -58,8 +57,13 @@ class Fila{
         }
 
         void visualisar(){
-            for(int i=inicio; i < fim; i++)
-                cout << "Posicao: " << (i+1) << " - " << "Valor: " << vet[i] << endl;
+            if(inicio == 0){
+                for(int i=inicio; i < fim; i++)
+                    cout << "Posicao: " << i+1 << " - " << "Valor: " << vet[i] << endl;
+            }else{
+                for(int i=0; i < fim-inicio; i++)
+                    cout << "Posicao: " << i+1 << " - " << "Valor: " << vet[i+inicio] << endl;  
+            }
         }
 };
 
@@ -70,6 +74,10 @@ int main(){
     f.inserir(20);
     f.inserir(30);
     f.inserir(40);
+    f.inserir(50);
+    f.inserir(60);
+    f.inserir(70);
+    f.inserir(80);
     f.visualisar();
     cout << " " << endl;
     f.remover();
@@ -77,4 +85,7 @@ int main(){
     f.remover();
     f.remover();
     f.visualisar();
+   
+
+    return 0;
 }
