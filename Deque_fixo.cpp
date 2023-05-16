@@ -61,8 +61,6 @@ class Deque{
                                 vet[inicio--] = e;  
                                 cp += 1;                 
                             }
-
-            
         }
 
         void remover(modoDeque sentido){
@@ -80,9 +78,7 @@ class Deque{
                     inicio = tam_max -1;
                     fim = 0;
                 }
-
             }
-        
         
         void imprimir(){
             //impressão teste
@@ -99,7 +95,26 @@ class Deque{
             }
                 cout << endl; 
         }
+};
 
+class Fila: public Deque{
+    public:
+        Fila(int tam_max):
+            Deque(tam_max){ // ATENÇÃO AO DECLARAR CONSTRUTOR DA HERANÇA - NÃO USAR TIPO NESTE CASO
+
+        }
+
+        void inserir(int valor){
+            Deque::inserir(RETAGUARDA, valor);
+        }
+
+        void remover(){
+            Deque::remover(FRENTE);
+        }
+
+        void imprimir(){
+            Deque::imprimir();
+        }
 };
 
 int main(){
@@ -157,6 +172,24 @@ int main(){
     d.getFim();
     d.getCp();
     d.imprimir();
+
+    Fila f(4);
+
+    f.inserir(10);
+    f.inserir(20);
+    f.inserir(30);
+    f.inserir(40);
+    f.imprimir();
+    f.remover();
+    f.imprimir();
+    f.remover();
+    f.imprimir();
+    f.remover();
+    f.imprimir();
+    f.remover();
+    f.imprimir();
+    f.remover();
+    f.imprimir();
 
     return 0;
 }
